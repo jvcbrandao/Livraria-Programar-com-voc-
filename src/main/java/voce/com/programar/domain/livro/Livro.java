@@ -4,10 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.stereotype.Component;
 
 @Entity(name="livros")
-public class Livro {
+public abstract class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

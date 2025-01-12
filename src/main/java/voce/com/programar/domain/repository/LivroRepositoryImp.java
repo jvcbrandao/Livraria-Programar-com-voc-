@@ -1,69 +1,17 @@
-package voce.com.programar.domain.livro;
+package voce.com.programar.domain.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
-
+import voce.com.programar.domain.livro.Livro;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-
-// livrariaPU
-
-
 public class LivroRepositoryImp implements LivroRepository{
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("livrariaPU");
-    private EntityManager em = emf.createEntityManager();
-
-
-    @Override
-    public Optional<Livro> findById(Long id) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            return Optional.ofNullable(em.find(Livro.class, id));
-        } finally {
-            em.close();
-        }
-    }
-
-    @Override
-    public Livro save(Livro livro) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(livro);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            throw e;
-        } finally {
-            em.close();
-        }
-        return livro;
-    }
-
-    @Override
-    public List<Livro> findAll() {
-        EntityManager em = emf.createEntityManager();
-        try {
-            return em.createQuery("SELECT l FROM Livro l", Livro.class).getResultList();
-        } finally {
-            em.close();
-        }
-    }
-
-    public void close() {
-        if (emf.isOpen()) {
-            emf.close();
-        }
-    }
 
     @Override
     public void flush() {
@@ -147,16 +95,29 @@ public class LivroRepositoryImp implements LivroRepository{
 
 
     @Override
+    public <S extends Livro> S save(S entity) {
+        return null;
+    }
+
+    @Override
     public <S extends Livro> List<S> saveAll(Iterable<S> entities) {
         return List.of();
     }
 
+    @Override
+    public Optional<Livro> findById(Long aLong) {
+        return Optional.empty();
+    }
 
     @Override
     public boolean existsById(Long aLong) {
         return false;
     }
 
+    @Override
+    public List<Livro> findAll() {
+        return List.of();
+    }
 
     @Override
     public List<Livro> findAllById(Iterable<Long> longs) {

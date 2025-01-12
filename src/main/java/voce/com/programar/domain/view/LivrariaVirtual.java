@@ -1,25 +1,16 @@
-package voce.com.programar.domain.menu;
-
-import org.springframework.stereotype.Component;
-import voce.com.programar.domain.livro.Livro;
-import voce.com.programar.domain.livro.LivroRepositoryImp;
+package voce.com.programar.domain.view;
 
 import java.util.Scanner;
 
+public class LivrariaVirtual {
 
-public class Menu{
+    private int MAX_IMPRESSOS;
+    private int MAX_ELETRONICOS;
+    private int MAX_VENDAS;
+    //impressos, eletronicos, vendas, num impressos, num Eletronicos, num vendas
 
-    public Menu(){}
-
-    private LivroRepositoryImp livroRepositoryImp;
-
-    public Menu(LivroRepositoryImp livroRepositoryImp) {
-        this.livroRepositoryImp = livroRepositoryImp;
-    }
 
     Scanner scanner = new Scanner(System.in);
-
-    Livro livro = new Livro("Maria", "Maria", "Editora Maria", 10000000 );
 
     int opcao = -1;
 
@@ -45,26 +36,42 @@ public class Menu{
 
         switch (opcao){
             case 1:
-                System.out.println(livro.toString());;
-                livroRepositoryImp.save(livro);
+                cadastrarLivro();
                 break;
             case 2:
-                //realizar venda;
+                realizarVenda();
                 break;
             case 3:
-                //listar livros
+                listarLivros();
                 break;
             case 4:
-                //listar vendas
+                listarVendas();
                 break;
             case 0:
                 System.out.println("Saindo...");
         }
 
+    }
 
+
+
+
+    private void cadastrarLivro() {
 
 
 
 
     }
+
+    private void realizarVenda() {
+    }
+
+    private void listarLivrosImpressos(){}
+
+    private void listarLivrosEletronicos(){}
+
+    private void listarLivros() {
+    }
+
+    private void listarVendas(){}
 }
